@@ -27,7 +27,7 @@ import Boom from '@hapi/boom';
 
 const ErrorHandling = require('@mojaloop/central-services-error-handling')
 const Logger = require('@mojaloop/central-services-shared').Logger
-const { statusEnum } = require('@mojaloop/central-services-shared').HealthCheck.HealthCheckEnums
+const { responseCode, statusEnum } = require('@mojaloop/central-services-shared').HealthCheck.HealthCheckEnums
 
 /**
  * @function defaultHealthHandler
@@ -42,7 +42,7 @@ const { statusEnum } = require('@mojaloop/central-services-shared').HealthCheck.
 const defaultHealthHandler = (healthCheck: any): Lifecycle.Method => {
   return async (_, h) => {
     let responseBody
-    let responseCode = 200
+    let code = responseCode.success
     try {
       responseBody = await healthCheck.getHealth()
     } catch (err) {
@@ -51,10 +51,10 @@ const defaultHealthHandler = (healthCheck: any): Lifecycle.Method => {
 
     if (!responseBody || responseBody.status !== statusEnum.OK) {
       // Gateway Error
-      responseCode = 502
+      code = responseCode.gatewayTimeout
     }
 
-    return h.response(responseBody).code(responseCode)
+    return h.response(responseBody).code(code)
   }
 }
 

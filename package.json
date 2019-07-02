@@ -1,6 +1,6 @@
 {
   "name": "@mojaloop/central-services-health",
-  "version": "0.1.0",
+  "version": "7.0.0",
   "description": "Shared code for generic health check servers",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
@@ -43,7 +43,7 @@
     "@hapi/boom": "7.4.2",
     "@hapi/hapi": "18.3.1",
     "@mojaloop/central-services-error-handling": "5.2.0",
-    "@mojaloop/central-services-shared": "6.4.0"
+    "@mojaloop/central-services-shared": "6.4.1"
   },
   "devDependencies": {
     "@types/hapi__hapi": "18.2.5",
