@@ -18,14 +18,14 @@
  * Gates Foundation
  - Name Surname <name.surname@gatesfoundation.com>
 
- - Shashikant Hirugade <shashikant.hirugade@modusbox.com>
+ - Lewis Daly <lewis@vesselstech.com>
 
  --------------
  ******/
 
 'use strict'
 
-
-import metrics = require('./metrics')
-export = new metrics.Metrics()
-
+export {
+  createHealthCheckServer,
+  defaultHealthHandler,
+} from './HealthCheckServer'

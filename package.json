@@ -1,7 +1,7 @@
 {
-  "name": "@mojaloop/central-services-metrics",
-  "version": "5.3.0",
-  "description": "Shared code for metrics generation",
+  "name": "@mojaloop/central-services-health",
+  "version": "6.4.0",
+  "description": "Shared code for generic health check servers",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
   "scripts": {
@@ -31,22 +31,25 @@
     "central",
     "services"
   ],
-  "author": "shashi165",
+  "author": "lewisdaly",
   "contributors": [
-    "Georgi Georgiev <georgi.georgiev@modusbox.com>"
+    "Lewis Daly <lewis@vesselstech.com"
   ],
   "license": "Apache-2.0",
   "bugs": {
-    "url": "https://github.com/mojaloop/central-services-metrics/issues"
+    "url": "https://github.com/mojaloop/central-services-health/issues"
   },
-  "homepage": "https://github.com/mojaloop/central-services-metrics#readme",
+  "homepage": "https://github.com/mojaloop/central-services-health#readme",
   "dependencies": {
-    "@mojaloop/central-services-shared": "5.2.0",
-    "prom-client": "11.2.1"
+    "@hapi/boom": "7.4.2",
+    "@hapi/hapi": "18.3.1",
+    "@mojaloop/central-services-error-handling": "5.2.0"
+    
   },
   "devDependencies": {
     "@types/node": "11.9.4",
     "@types/tape": "4.2.33",
+    "@types/hapi__hapi": "18.2.5",
     "debug": "4.1.1",
     "faucet": "0.0.1",
     "nyc": "13.3.0",
