@@ -18,45 +18,37 @@
  * Gates Foundation
  - Name Surname <name.surname@gatesfoundation.com>
 
- - Pedro Barreto <pedrob@crosslaketech.com>
- - Rajiv Mothilal <rajivmothilal@gmail.com>
- - Miguel de Barros <miguel.debarros@modusbox.com>
- - Shashikant Hirugade <shashikant.hirugade@modusbox.com>
-
+ * Lewis Daly <lewis@vesselstech.com>
  --------------
  ******/
-import client = require('prom-client');
+import Hapi, { Lifecycle } from '@hapi/hapi';
 /**
- * Type that represents the options that are required for setup
+ * @function defaultHealthHandler
+ *
+ * @description Given a health check object, return the default
+ *   handler for responding to health checks
+ *
+ * @param {BaseHealthCheck} healthCheck - the BaseHealthCheck subclass
+ *
+ * @returns {async (response, h) => any} handler - the HapiJS compatible handler for the health check
  */
-declare type metricOptionsType = {
-    timeout: number;
-    prefix: string;
-    defaultLabels?: Map<string, string>;
-};
-/** Wrapper class for prom-client. */
-declare class Metrics {
-    /** To make sure the setup is run only once */
-    private _alreadySetup;
-    /** Object containing the histogram values */
-    private _histograms;
-    /** The options passed to the setup */
-    private _options;
-    /**
-     * Setup the prom client for collecting metrics using the options passed
-     */
-    setup: (options: metricOptionsType) => boolean;
-    /**
-     * Get the histogram values for given name
-     */
-    getHistogram: (name: string, help?: string | undefined, labelNames?: string[] | undefined, buckets?: number[]) => client.Histogram;
-    /**
-     * Get the metrics
-     */
-    getMetricsForPrometheus: () => string;
-    /**
-     * Get the options that are used to setup the prom-client
-     */
-    getOptions: () => metricOptionsType;
-}
-export { Metrics, metricOptionsType };
+declare const defaultHealthHandler: (healthCheck: any) => Lifecycle.Method;
+/**
+ * @function failAction
+ *
+ * @description the failure handler for Hapi. We put this here to make it more testable
+ *
+ */
+declare const failAction: (_request: Hapi.Request, _handler: Hapi.ResponseToolkit, err?: Error | undefined) => Promise<never>;
+/**
+ * @function createHealthCheckServer
+ *
+ * @description Creates the Hapi HTTP Health check server
+ *
+ * @param {number} port Port to register the Server against
+ * @param {async (response, h) => any} healthCheckHandler A handler that handles HapiJS requests for health
+ *
+ * @returns {*} server - a HapiJS Server object
+ */
+declare const createHealthCheckServer: (port: string, healthCheckHandler: Lifecycle.Method) => Promise<Hapi.Server>;
+export { createHealthCheckServer, defaultHealthHandler, failAction };

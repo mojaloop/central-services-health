@@ -6,7 +6,7 @@ defaults_working_directory: &defaults_working_directory
 
 defaults_docker_node: &defaults_docker_node
   docker:
-    - image: mhart/alpine-node:10.15.1
+    - image: node:10.15.3-alpine
 
 defaults_Dependencies: &defaults_Dependencies |
     apk --no-cache add git
@@ -129,7 +129,7 @@ jobs:
             if [ "${CIRCLE_BRANCH}" == "master" ];
             then
                 echo "Sending lcov.info to SonarQube..."
-                aws s3 cp coverage/lcov.info $AWS_S3_DIR_SONARQUBE/central-services-metrics/lcov.info
+                aws s3 cp coverage/lcov.info ${AWS_S3_DIR_SONARQUBE}/${CIRCLE_PROJECT_REPONAME}/lcov.info
             else
                 echo "Not a release (env CIRCLE_BRANCH != 'master'), skipping sending lcov.info to SonarQube."
             fi
