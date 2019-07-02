@@ -64,7 +64,7 @@ const defaultHealthHandler = (healthCheck: any): Lifecycle.Method => {
  * @description the failure handler for Hapi. We put this here to make it more testable
  *
  */
-const failAction = async (request: Hapi.Request, handler: Hapi.ResponseToolkit, err?: Error) => {
+const failAction = async (_request: Hapi.Request, _handler: Hapi.ResponseToolkit, err?: Error) => {
   if (!err) {
     throw Boom.boomify(new Error(`Unknown Server Error`))
   }
@@ -82,8 +82,9 @@ const failAction = async (request: Hapi.Request, handler: Hapi.ResponseToolkit, 
  * @returns {*} server - a HapiJS Server object
  */
 
-const createHealthCheckServer = async (port: number, healthCheckHandler: Lifecycle.Method): Promise<Hapi.Server> => {
-  const server = new Hapi.Server({
+const createHealthCheckServer = async (port: string, healthCheckHandler: Lifecycle.Method): Promise<Hapi.Server> => {
+  //@ts-ignore - type defs are wrong
+  const server = Hapi.server({
     port,
     routes: {
       validate: {

@@ -8,7 +8,7 @@
     "test": "npm run test:unit | faucet",
     "pretest": "npm run build",
     "standard": "standard",
-    "build": "tsc; standard --fix",
+    "build": "tsc",
     "watch": "tsc -w",
     "test:unit": "ts-node node_modules/tape/bin/tape 'test/unit/**/*.test.ts'",
     "test:xunit": "npm run test:unit | tap-xunit",
@@ -18,7 +18,6 @@
   },
   "pre-commit": [
     "build",
-    "git:standardFix",
     "test:unit",
     "git:stagelib"
   ],
@@ -43,17 +42,19 @@
   "dependencies": {
     "@hapi/boom": "7.4.2",
     "@hapi/hapi": "18.3.1",
-    "@mojaloop/central-services-error-handling": "5.2.0"
-    
+    "@mojaloop/central-services-error-handling": "5.2.0",
+    "@mojaloop/central-services-shared": "6.4.0"
   },
   "devDependencies": {
-    "@types/node": "11.9.4",
-    "@types/tape": "4.2.33",
     "@types/hapi__hapi": "18.2.5",
+    "@types/node": "11.9.4",
+    "@types/sinon": "7.0.13",
+    "@types/tape": "4.2.33",
     "debug": "4.1.1",
     "faucet": "0.0.1",
     "nyc": "13.3.0",
     "pre-commit": "1.2.2",
+    "sinon": "7.3.2",
     "standard": "12.0.1",
     "tap-spec": "5.0.0",
     "tap-xunit": "2.3.0",
