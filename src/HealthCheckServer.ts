@@ -22,9 +22,8 @@
  --------------
  ******/
 
-import Hapi, { Lifecycle } from '@hapi/hapi';
-import Boom from '@hapi/boom';
-
+import Hapi, { Lifecycle, ResponseObject } from '@hapi/hapi'
+import Boom from '@hapi/boom'
 const ErrorHandling = require('@mojaloop/central-services-error-handling')
 const Logger = require('@mojaloop/central-services-shared').Logger
 const { responseCode, statusEnum } = require('@mojaloop/central-services-shared').HealthCheck.HealthCheckEnums
@@ -40,7 +39,7 @@ const { responseCode, statusEnum } = require('@mojaloop/central-services-shared'
  * @returns {async (response, h) => any} handler - the HapiJS compatible handler for the health check
  */
 const defaultHealthHandler = (healthCheck: any): Lifecycle.Method => {
-  return async (_, h) => {
+  return async (_, h): Promise<ResponseObject> => {
     let responseBody
     let code = responseCode.success
     try {
@@ -64,7 +63,7 @@ const defaultHealthHandler = (healthCheck: any): Lifecycle.Method => {
  * @description the failure handler for Hapi. We put this here to make it more testable
  *
  */
-const failAction = async (_request: Hapi.Request, _handler: Hapi.ResponseToolkit, err?: Error) => {
+const failAction = async (_request: Hapi.Request, _handler: Hapi.ResponseToolkit, err?: Error): Promise<void> => {
   if (!err) {
     throw Boom.boomify(new Error(`Unknown Server Error`))
   }
@@ -105,8 +104,4 @@ const createHealthCheckServer = async (port: string, healthCheckHandler: Lifecyc
   return server
 }
 
-export {
-  createHealthCheckServer,
-  defaultHealthHandler,
-  failAction
-}
+export { createHealthCheckServer, defaultHealthHandler, failAction }

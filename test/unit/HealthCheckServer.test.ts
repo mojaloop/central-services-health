@@ -25,19 +25,15 @@
 
 'use strict'
 
-import tape from 'tape'
 import Sinon, { SinonSandbox } from 'sinon'
-import Hapi from '@hapi/hapi';
-import {
-  createHealthCheckServer,
-  defaultHealthHandler,
-  failAction
-} from '../../src/HealthCheckServer'
+import tape from 'tape'
+import Hapi from '@hapi/hapi'
+import { createHealthCheckServer, defaultHealthHandler, failAction } from '../../src/HealthCheckServer'
 
 const Test = require('tapes')(require('tape'))
 const HealthCheck = require('@mojaloop/central-services-shared').HealthCheck.HealthCheck
 
-Test('HealthCheckServer test', function (healthCheckServerTest: any) {
+Test('HealthCheckServer test', function(healthCheckServerTest: any) {
   let sandbox: SinonSandbox
 
   healthCheckServerTest.beforeEach((t: any) => {
@@ -60,7 +56,7 @@ Test('HealthCheckServer test', function (healthCheckServerTest: any) {
       healthCheck.getHealth.returns({})
       const codeStub = sandbox.stub()
       const responseStub = sandbox.stub().returns({ code: codeStub })
-      const request: any = null;
+      const request: any = null
       const h: any = {
         response: responseStub
       }
@@ -82,11 +78,10 @@ Test('HealthCheckServer test', function (healthCheckServerTest: any) {
       healthCheck.getHealth.throws(new Error('Get health failed'))
       const codeStub = sandbox.stub()
       const responseStub = sandbox.stub().returns({ code: codeStub })
-      const request: any = null;
+      const request: any = null
       const h: any = {
         response: responseStub
       }
-
 
       // Act
       const handler = defaultHealthHandler(healthCheck)
@@ -103,12 +98,10 @@ Test('HealthCheckServer test', function (healthCheckServerTest: any) {
       const healthCheck = new HealthCheck({ version: '1.0.0' }, [
         async () => ({ service: 'datastore', status: 'DOWN' })
       ])
-      // TODO: uncomment?
-      // sandbox.stub(healthCheck, 'getHealth')
-      // healthCheck.getHealth.returns({})
+
       const codeStub = sandbox.stub()
       const responseStub = sandbox.stub().returns({ code: codeStub })
-      const request: any = null;
+      const request: any = null
       const h: any = {
         response: responseStub
       }
@@ -130,7 +123,7 @@ Test('HealthCheckServer test', function (healthCheckServerTest: any) {
       healthCheck.getHealth.resolves({ status: 'OK' })
       const codeStub = sandbox.stub()
       const responseStub = sandbox.stub().returns({ code: codeStub })
-      const request: any = null;
+      const request: any = null
       const h: any = {
         response: responseStub
       }
@@ -163,7 +156,7 @@ Test('HealthCheckServer test', function (healthCheckServerTest: any) {
       })
 
       // Act
-      const handler: any = () => { }
+      const handler: any = () => {}
       await createHealthCheckServer('1234', handler)
 
       // Assert
@@ -180,8 +173,8 @@ Test('HealthCheckServer test', function (healthCheckServerTest: any) {
       // Arrange
       const error = new Error('Basic error message')
       const expected = 500
-      const request: any = null;
-      const handler: any = null;
+      const request: any = null
+      const handler: any = null
 
       // Act
       try {

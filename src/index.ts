@@ -25,7 +25,4 @@
 
 'use strict'
 
-export {
-  createHealthCheckServer,
-  defaultHealthHandler,
-} from './HealthCheckServer'
+export { createHealthCheckServer, defaultHealthHandler } from './HealthCheckServer'
