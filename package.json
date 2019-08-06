@@ -1,6 +1,6 @@
 {
   "name": "@mojaloop/central-services-health",
-  "version": "7.0.0",
+  "version": "7.2.0",
   "description": "Shared code for generic health check servers",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
@@ -61,14 +61,13 @@
     "pre-commit": "1.2.2",
     "prettier": "1.18.2",
     "sinon": "7.3.2",
-    "standard": "12.0.1",
     "tap-spec": "5.0.0",
     "tap-xunit": "2.3.0",
     "tape": "4.11.0",
     "tapes": "4.1.0",
     "ts-node": "8.3.0",
     "tslint": "5.12.1",
-    "typedoc": "0.14.2",
+    "typedoc": "^0.15.0",
     "typescript": "3.5.2"
   },
   "nyc": {
