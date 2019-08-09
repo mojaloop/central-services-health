@@ -182,8 +182,10 @@ Test('HealthCheckServer test', function(healthCheckServerTest: any) {
         test.fail('Should have thrown an exception')
       } catch (err) {
         // Assert
-        const { errorInformation: { errorCode, errorDescription } } = err.toApiErrorObject()
-        const containsString = errorDescription.indexOf('Basic error message') > -1;
+        const {
+          errorInformation: { errorCode, errorDescription }
+        } = err.toApiErrorObject()
+        const containsString = errorDescription.indexOf('Basic error message') > -1
 
         test.equal(errorCode, expected, '`errorCode` should match from error-handling library.')
         test.ok(containsString, '`errorDescription` should contain original error description.')

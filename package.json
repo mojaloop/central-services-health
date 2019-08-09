@@ -1,6 +1,6 @@
 {
   "name": "@mojaloop/central-services-health",
-  "version": "7.2.0",
+  "version": "7.3.0",
   "description": "Shared code for generic health check servers",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -14,7 +14,9 @@
     "test:unit": "ts-node node_modules/tape/bin/tape 'test/unit/**/*.test.ts'",
     "test:xunit": "npm run test:unit | tap-xunit",
     "test:coverage": "nyc --reporter=lcov --require ts-node/register tape test/unit/**/*.test.{ts,js} | tap-spec; nyc report ---reporter=text",
-    "git:lintFix": "npm run lint -- --fix"
+    "git:lintFix": "npm run lint -- --fix",
+    "audit:resolve": "SHELL=sh resolve-audit",
+    "audit:check": "SHELL=sh check-audit"
   },
   "pre-commit": [
     "build",
@@ -56,7 +58,8 @@
     "eslint-config-prettier": "6.0.0",
     "eslint-plugin-prettier": "3.1.0",
     "faucet": "0.0.1",
-    "nyc": "13.3.0",
+    "npm-audit-resolver": "1.5.0",
+    "nyc": "^14.1.1",
     "pre-commit": "1.2.2",
     "prettier": "1.18.2",
     "sinon": "7.3.2",
@@ -66,7 +69,7 @@
     "tapes": "4.1.0",
     "ts-node": "8.3.0",
     "tslint": "5.12.1",
-    "typedoc": "^0.15.0",
+    "typedoc": "0.15.0",
     "typescript": "3.5.2"
   },
   "nyc": {
