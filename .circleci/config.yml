@@ -18,8 +18,8 @@ defaults_Dependencies: &defaults_Dependencies |
     npm config set unsafe-perm true
     npm install -g node-gyp
 
-# defaults_Typescript: &defaults_Typescript |
-#     npm run build
+defaults_Typescript: &defaults_Typescript |
+    npm run build
 
 defaults_awsCliDependencies: &defaults_awsCliDependencies |
     apk --no-cache add \
@@ -194,9 +194,9 @@ jobs:
           name: setup environment vars for SNAPSHOT release
           command: |
             echo 'export RELEASE_TAG=$RELEASE_TAG_SNAPSHOT' >> $BASH_ENV
-      # - run:
-      #     name: Build typescript
-      #     command: *defaults_Typescript
+      - run:
+          name: Build typescript
+          command: *defaults_Typescript
       - run:
           <<: *defaults_npm_auth
       - run:
@@ -216,9 +216,9 @@ jobs:
           name: setup environment vars for LATEST release
           command: |
             echo 'export RELEASE_TAG=$RELEASE_TAG_PROD' >> $BASH_ENV
-      # - run:
-      #     name: Build typescript
-      #     command: *defaults_Typescript
+      - run:
+          name: Build typescript
+          command: *defaults_Typescript
       - run:
           <<: *defaults_npm_auth
       - run:
