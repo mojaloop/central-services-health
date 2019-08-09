@@ -261,7 +261,7 @@ workflows:
               ignore:
                 - /feature*/
                 - /bugfix*/
-       - vulnerability-check:
+      - vulnerability-check:
           context: org-global
           requires:
             - setup
