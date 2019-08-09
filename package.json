@@ -2,8 +2,11 @@
   "name": "@mojaloop/central-services-health",
   "version": "7.3.0",
   "description": "Shared code for generic health check servers",
-  "main": "dist/index.js",
-  "types": "dist/index.d.ts",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "files": [
+    "/dist"
+  ],
   "scripts": {
     "test": "npm run test:unit | faucet",
     "pretest": "npm run build",
