@@ -172,7 +172,7 @@ Test('HealthCheckServer test', function(healthCheckServerTest: any) {
     failActionTest.test('Throws the error', async (test: tape.Test) => {
       // Arrange
       const error = new Error('Basic error message')
-      const expected = 500
+      const expected = '2001'
       const request: any = null
       const handler: any = null
 
@@ -182,7 +182,11 @@ Test('HealthCheckServer test', function(healthCheckServerTest: any) {
         test.fail('Should have thrown an exception')
       } catch (err) {
         // Assert
-        test.equal(err.output.statusCode, expected, 'Status Codes should match')
+        const { errorInformation: { errorCode, errorDescription } } = err.toApiErrorObject()
+        const containsString = errorDescription.indexOf('Basic error message') > -1;
+
+        test.equal(errorCode, expected, '`errorCode` should match from error-handling library.')
+        test.ok(containsString, '`errorDescription` should contain original error description.')
         test.pass()
       }
 

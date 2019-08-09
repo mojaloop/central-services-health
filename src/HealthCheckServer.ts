@@ -23,8 +23,7 @@
  ******/
 
 import Hapi, { Lifecycle, ResponseObject } from '@hapi/hapi'
-import Boom from '@hapi/boom'
-const ErrorHandling = require('@mojaloop/central-services-error-handling')
+const ErrorHandler = require('@mojaloop/central-services-error-handling')
 const Logger = require('@mojaloop/central-services-shared').Logger
 const { responseCode, statusEnum } = require('@mojaloop/central-services-shared').HealthCheck.HealthCheckEnums
 
@@ -64,10 +63,7 @@ const defaultHealthHandler = (healthCheck: any): Lifecycle.Method => {
  *
  */
 const failAction = async (_request: Hapi.Request, _handler: Hapi.ResponseToolkit, err?: Error): Promise<void> => {
-  if (!err) {
-    throw Boom.boomify(new Error(`Unknown Server Error`))
-  }
-  throw Boom.boomify(err)
+  throw ErrorHandler.Factory.reformatFSPIOPError(err)
 }
 
 /**
@@ -87,7 +83,7 @@ const createHealthCheckServer = async (port: string, healthCheckHandler: Lifecyc
     port,
     routes: {
       validate: {
-        options: ErrorHandling.validateRoutes(),
+        options: ErrorHandler.validateRoutes(),
         failAction: failAction
       }
     }
