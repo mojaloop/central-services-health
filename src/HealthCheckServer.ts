@@ -62,8 +62,8 @@ const defaultHealthHandler = (healthCheck: any): Lifecycle.Method => {
  * @description the failure handler for Hapi. We put this here to make it more testable
  *
  */
-const failAction = async (_request: Hapi.Request, _handler: Hapi.ResponseToolkit, err?: Error): Promise<void> => {
-  throw ErrorHandler.Factory.reformatFSPIOPError(err)
+const failAction = async (_request: Hapi.Request, _handler: Hapi.ResponseToolkit, err?: Error | any): Promise<void> => {
+  throw ErrorHandler.Factory.createFSPIOPErrorFromJoiError(err)
 }
 
 /**

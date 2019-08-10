@@ -32,6 +32,8 @@ import { createHealthCheckServer, defaultHealthHandler, failAction } from '../..
 
 const Test = require('tapes')(require('tape'))
 const HealthCheck = require('@mojaloop/central-services-shared').HealthCheck.HealthCheck
+const { responseCode } = require('@mojaloop/central-services-shared').HealthCheck.HealthCheckEnums
+const ErrorEnums = require('@mojaloop/central-services-error-handling').Enums
 
 Test('HealthCheckServer test', function(healthCheckServerTest: any) {
   let sandbox: SinonSandbox
@@ -111,7 +113,7 @@ Test('HealthCheckServer test', function(healthCheckServerTest: any) {
       await handler(request, h)
 
       // Assert
-      test.ok(codeStub.calledWith(502), 'codeStub has been called')
+      test.ok(codeStub.calledWith(responseCode.gatewayTimeout), 'codeStub has been called')
       test.ok(responseStub.called, 'responseStub has been called')
       test.end()
     })
@@ -171,8 +173,12 @@ Test('HealthCheckServer test', function(healthCheckServerTest: any) {
   healthCheckServerTest.test('failAction', (failActionTest: tape.Test) => {
     failActionTest.test('Throws the error', async (test: tape.Test) => {
       // Arrange
-      const error = new Error('Basic error message')
-      const expected = '2001'
+      const error = {
+        type: 'any.required',
+        context: {
+          label: 'Field is required'
+        }
+      }
       const request: any = null
       const handler: any = null
 
@@ -183,13 +189,15 @@ Test('HealthCheckServer test', function(healthCheckServerTest: any) {
       } catch (err) {
         // Assert
         const {
-          errorInformation: { errorCode, errorDescription }
+          errorInformation: { errorCode }
         } = err.toApiErrorObject()
-        const containsString = errorDescription.indexOf('Basic error message') > -1
 
-        test.equal(errorCode, expected, '`errorCode` should match from error-handling library.')
-        test.ok(containsString, '`errorDescription` should contain original error description.')
-        test.pass()
+        test.equal(
+          errorCode,
+          ErrorEnums.FSPIOPErrorCodes.MISSING_ELEMENT.code,
+          '`errorCode` should match from error-handling library.'
+        )
+        test.pass('Errors thrown correctly')
       }
 
       test.end()
