@@ -1,0 +1,8 @@
+{
+  "755|nyc>istanbul-reports>handlebars": {
+    "fix": 1
+  },
+  "1065|nyc>istanbul-reports>handlebars>async>lodash": {
+    "fix": 1
+  }
+}

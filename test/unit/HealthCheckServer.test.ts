@@ -25,19 +25,17 @@
 
 'use strict'
 
-import tape from 'tape'
 import Sinon, { SinonSandbox } from 'sinon'
-import Hapi from '@hapi/hapi';
-import {
-  createHealthCheckServer,
-  defaultHealthHandler,
-  failAction
-} from '../../src/HealthCheckServer'
+import tape from 'tape'
+import Hapi from '@hapi/hapi'
+import { createHealthCheckServer, defaultHealthHandler, failAction } from '../../src/HealthCheckServer'
 
 const Test = require('tapes')(require('tape'))
 const HealthCheck = require('@mojaloop/central-services-shared').HealthCheck.HealthCheck
+const { responseCode } = require('@mojaloop/central-services-shared').HealthCheck.HealthCheckEnums
+const ErrorEnums = require('@mojaloop/central-services-error-handling').Enums
 
-Test('HealthCheckServer test', function (healthCheckServerTest: any) {
+Test('HealthCheckServer test', function(healthCheckServerTest: any) {
   let sandbox: SinonSandbox
 
   healthCheckServerTest.beforeEach((t: any) => {
@@ -60,7 +58,7 @@ Test('HealthCheckServer test', function (healthCheckServerTest: any) {
       healthCheck.getHealth.returns({})
       const codeStub = sandbox.stub()
       const responseStub = sandbox.stub().returns({ code: codeStub })
-      const request: any = null;
+      const request: any = null
       const h: any = {
         response: responseStub
       }
@@ -82,11 +80,10 @@ Test('HealthCheckServer test', function (healthCheckServerTest: any) {
       healthCheck.getHealth.throws(new Error('Get health failed'))
       const codeStub = sandbox.stub()
       const responseStub = sandbox.stub().returns({ code: codeStub })
-      const request: any = null;
+      const request: any = null
       const h: any = {
         response: responseStub
       }
-
 
       // Act
       const handler = defaultHealthHandler(healthCheck)
@@ -103,12 +100,10 @@ Test('HealthCheckServer test', function (healthCheckServerTest: any) {
       const healthCheck = new HealthCheck({ version: '1.0.0' }, [
         async () => ({ service: 'datastore', status: 'DOWN' })
       ])
-      // TODO: uncomment?
-      // sandbox.stub(healthCheck, 'getHealth')
-      // healthCheck.getHealth.returns({})
+
       const codeStub = sandbox.stub()
       const responseStub = sandbox.stub().returns({ code: codeStub })
-      const request: any = null;
+      const request: any = null
       const h: any = {
         response: responseStub
       }
@@ -118,7 +113,7 @@ Test('HealthCheckServer test', function (healthCheckServerTest: any) {
       await handler(request, h)
 
       // Assert
-      test.ok(codeStub.calledWith(502), 'codeStub has been called')
+      test.ok(codeStub.calledWith(responseCode.gatewayTimeout), 'codeStub has been called')
       test.ok(responseStub.called, 'responseStub has been called')
       test.end()
     })
@@ -130,7 +125,7 @@ Test('HealthCheckServer test', function (healthCheckServerTest: any) {
       healthCheck.getHealth.resolves({ status: 'OK' })
       const codeStub = sandbox.stub()
       const responseStub = sandbox.stub().returns({ code: codeStub })
-      const request: any = null;
+      const request: any = null
       const h: any = {
         response: responseStub
       }
@@ -163,7 +158,7 @@ Test('HealthCheckServer test', function (healthCheckServerTest: any) {
       })
 
       // Act
-      const handler: any = () => { }
+      const handler: any = () => {}
       await createHealthCheckServer('1234', handler)
 
       // Assert
@@ -178,10 +173,14 @@ Test('HealthCheckServer test', function (healthCheckServerTest: any) {
   healthCheckServerTest.test('failAction', (failActionTest: tape.Test) => {
     failActionTest.test('Throws the error', async (test: tape.Test) => {
       // Arrange
-      const error = new Error('Basic error message')
-      const expected = 500
-      const request: any = null;
-      const handler: any = null;
+      const error = {
+        type: 'any.required',
+        context: {
+          label: 'Field is required'
+        }
+      }
+      const request: any = null
+      const handler: any = null
 
       // Act
       try {
@@ -189,8 +188,16 @@ Test('HealthCheckServer test', function (healthCheckServerTest: any) {
         test.fail('Should have thrown an exception')
       } catch (err) {
         // Assert
-        test.equal(err.output.statusCode, expected, 'Status Codes should match')
-        test.pass()
+        const {
+          errorInformation: { errorCode }
+        } = err.toApiErrorObject()
+
+        test.equal(
+          errorCode,
+          ErrorEnums.FSPIOPErrorCodes.MISSING_ELEMENT.code,
+          '`errorCode` should match from error-handling library.'
+        )
+        test.pass('Errors thrown correctly')
       }
 
       test.end()
