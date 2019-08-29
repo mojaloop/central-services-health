@@ -4,5 +4,8 @@
   },
   "1065|nyc>istanbul-reports>handlebars>async>lodash": {
     "fix": 1
+  },
+  "1118|@typescript-eslint/eslint-plugin>eslint-utils": {
+    "fix": 1
   }
 }
