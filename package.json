@@ -1,6 +1,6 @@
 {
   "name": "@mojaloop/central-services-health",
-  "version": "7.4.0",
+  "version": "7.4.1",
   "description": "Shared code for generic health check servers",
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
