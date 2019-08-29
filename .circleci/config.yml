@@ -308,7 +308,7 @@ workflows:
       - test-build:
           context: org-global
           requires:
-             - setup
+            - setup
             - test-unit
             - test-coverage
           filters:
