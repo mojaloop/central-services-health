@@ -184,21 +184,6 @@ jobs:
       - store_artifacts:
           path: /tmp/license-scanner/results
           prefix: licenses
-
-  # TODO: remove
-  test-build:
-    <<: *defaults_working_directory
-    <<: *defaults_docker_node
-    steps:
-      - run:
-          name: Install general dependencies
-          command: *defaults_Dependencies
-      - checkout
-      - restore_cache:
-          key: dependency-cache-{{ checksum "package.json" }}
-      - run:
-          name: Build typescript
-          command: *defaults_Typescript
  
   build-snapshot:
     <<: *defaults_working_directory
@@ -298,19 +283,6 @@ workflows:
           context: org-global
           requires:
             - setup
-          filters:
-            tags:
-              only: /.*/
-            branches:
-              ignore:
-                - /feature*/
-                - /bugfix*/
-      - test-build:
-          context: org-global
-          requires:
-            - setup
-            - test-unit
-            - test-coverage
           filters:
             tags:
               only: /.*/
