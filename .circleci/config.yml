@@ -200,7 +200,7 @@ jobs:
           name: Build typescript
           command: *defaults_Typescript
  
-          build-snapshot:
+  build-snapshot:
     <<: *defaults_working_directory
     <<: *defaults_docker_node
     steps:
