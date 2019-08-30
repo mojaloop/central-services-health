@@ -47,7 +47,7 @@
   "dependencies": {
     "@hapi/hapi": "18.3.2",
     "@mojaloop/central-services-error-handling": "7.3.0",
-    "@mojaloop/central-services-shared": "7.4.5"
+    "@mojaloop/central-services-shared": "7.4.6"
   },
   "devDependencies": {
     "@types/hapi__hapi": "18.2.5",
