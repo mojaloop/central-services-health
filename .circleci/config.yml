@@ -184,7 +184,7 @@ jobs:
       - store_artifacts:
           path: /tmp/license-scanner/results
           prefix: licenses
-
+ 
   build-snapshot:
     <<: *defaults_working_directory
     <<: *defaults_docker_node
@@ -197,6 +197,8 @@ jobs:
           name: setup environment vars for SNAPSHOT release
           command: |
             echo 'export RELEASE_TAG=$RELEASE_TAG_SNAPSHOT' >> $BASH_ENV
+      - restore_cache:
+          key: dependency-cache-{{ checksum "package.json" }}
       - run:
           name: Build typescript
           command: *defaults_Typescript
@@ -219,6 +221,8 @@ jobs:
           name: setup environment vars for LATEST release
           command: |
             echo 'export RELEASE_TAG=$RELEASE_TAG_PROD' >> $BASH_ENV
+      - restore_cache:
+          key: dependency-cache-{{ checksum "package.json" }}
       - run:
           name: Build typescript
           command: *defaults_Typescript
