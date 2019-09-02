@@ -46,7 +46,7 @@
   "homepage": "https://github.com/mojaloop/central-services-health#readme",
   "dependencies": {
     "@hapi/hapi": "18.3.2",
-    "@mojaloop/central-services-error-handling": "7.3.0",
+    "@mojaloop/central-services-error-handling": "7.4.2",
     "@mojaloop/central-services-shared": "7.4.5"
   },
   "devDependencies": {
