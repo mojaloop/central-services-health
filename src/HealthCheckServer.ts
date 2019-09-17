@@ -24,7 +24,7 @@
 
 import Hapi, { Lifecycle, ResponseObject } from '@hapi/hapi'
 const ErrorHandler = require('@mojaloop/central-services-error-handling')
-const Logger = require('@mojaloop/central-services-shared').Logger
+const Logger = require('@mojaloop/central-services-logger')
 const { responseCode, statusEnum } = require('@mojaloop/central-services-shared').HealthCheck.HealthCheckEnums
 
 /**

@@ -11,7 +11,23 @@ module.exports = {
   },
   rules: {
     '@typescript-eslint/no-explicit-any': 'off',
-    '@typescript-eslint/no-var-requires': 'off'
+    '@typescript-eslint/no-var-requires': 'off',
+    'indent': [
+      2,
+      2
+    ],
+    'quotes': [
+      2,
+      'single'
+    ],
+    'linebreak-style': [
+      2,
+      'unix'
+    ],
+    'semi': [
+      2,
+      'never'
+    ]
   },
   overrides: [
     {

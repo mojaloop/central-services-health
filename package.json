@@ -1,6 +1,6 @@
 {
   "name": "@mojaloop/central-services-health",
-  "version": "7.4.1",
+  "version": "8.1.0",
   "description": "Shared code for generic health check servers",
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
@@ -19,9 +19,12 @@
     "test:coverage": "nyc --reporter=lcov --require ts-node/register tape test/unit/**/*.test.{ts,js} | tap-spec; nyc report ---reporter=text",
     "git:lintFix": "npm run lint -- --fix",
     "audit:resolve": "SHELL=sh resolve-audit",
-    "audit:check": "SHELL=sh check-audit"
+    "audit:check": "SHELL=sh check-audit",
+    "dep:check": "npx ncu -e 2",
+    "dep:update": "npx ncu -u"
   },
   "pre-commit": [
+    "dep:check",
     "build",
     "git:lintFix",
     "test:unit"
@@ -37,7 +40,8 @@
   ],
   "author": "lewisdaly",
   "contributors": [
-    "Lewis Daly <lewis@vesselstech.com"
+    "Lewis Daly <lewis@vesselstech.com",
+    "Miguel de Barros <miguel.debarros@modusbox.com"
   ],
   "license": "Apache-2.0",
   "bugs": {
@@ -45,35 +49,37 @@
   },
   "homepage": "https://github.com/mojaloop/central-services-health#readme",
   "dependencies": {
-    "@hapi/hapi": "18.3.2",
-    "@mojaloop/central-services-error-handling": "7.3.0",
-    "@mojaloop/central-services-shared": "7.4.5"
+    "@hapi/hapi": "18.4.0",
+    "@mojaloop/central-services-error-handling": "7.5.0",
+    "@mojaloop/central-services-logger": "8.1.1",
+    "@mojaloop/central-services-shared": "8.1.0"
   },
   "devDependencies": {
     "@types/hapi__hapi": "18.2.5",
-    "@types/node": "12.7.2",
+    "@types/node": "12.7.5",
     "@types/sinon": "7.0.13",
     "@types/tape": "4.2.33",
-    "@typescript-eslint/eslint-plugin": "1.11.0",
-    "@typescript-eslint/parser": "1.11.0",
+    "@typescript-eslint/eslint-plugin": "2.3.0",
+    "@typescript-eslint/parser": "2.3.0",
     "debug": "4.1.1",
-    "eslint": "6.2.2",
-    "eslint-config-prettier": "6.1.0",
+    "eslint": "6.4.0",
+    "eslint-config-prettier": "6.3.0",
     "eslint-plugin-prettier": "3.1.0",
     "faucet": "0.0.1",
     "npm-audit-resolver": "1.5.0",
+    "npm-check-updates": "3.1.23",
     "nyc": "14.1.1",
     "pre-commit": "1.2.2",
     "prettier": "1.18.2",
-    "sinon": "7.4.1",
+    "sinon": "7.4.2",
     "tap-spec": "5.0.0",
     "tap-xunit": "2.4.1",
     "tape": "4.11.0",
     "tapes": "4.1.0",
-    "ts-node": "8.3.0",
-    "tslint": "5.19.0",
+    "ts-node": "8.4.1",
+    "tslint": "5.20.0",
     "typedoc": "0.15.0",
-    "typescript": "3.5.2"
+    "typescript": "3.6.3"
   },
   "nyc": {
     "include": [
