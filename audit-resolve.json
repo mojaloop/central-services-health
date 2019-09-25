@@ -1,11 +1,28 @@
 {
-  "755|nyc>istanbul-reports>handlebars": {
-    "fix": 1
+  "decisions": {
+    "755|nyc>istanbul-reports>handlebars": {
+      "madeAt": 0,
+      "decision": "fix"
+    },
+    "1065|nyc>istanbul-reports>handlebars>async>lodash": {
+      "madeAt": 0,
+      "decision": "fix"
+    },
+    "1118|@typescript-eslint/eslint-plugin>eslint-utils": {
+      "madeAt": 0,
+      "decision": "fix"
+    },
+    "1164|nyc>istanbul-reports>handlebars": {
+      "decision": "ignore",
+      "madeAt": 1569422167569,
+      "expiresAt": 1570026952718
+    },
+    "1164|typedoc>handlebars": {
+      "decision": "ignore",
+      "madeAt": 1569422167569,
+      "expiresAt": 1570026952718
+    }
   },
-  "1065|nyc>istanbul-reports>handlebars>async>lodash": {
-    "fix": 1
-  },
-  "1118|@typescript-eslint/eslint-plugin>eslint-utils": {
-    "fix": 1
-  }
+  "rules": {},
+  "version": 1
 }
