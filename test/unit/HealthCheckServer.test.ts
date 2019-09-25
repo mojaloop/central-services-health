@@ -40,6 +40,7 @@ Test('HealthCheckServer test', function(healthCheckServerTest: any) {
 
   healthCheckServerTest.beforeEach((t: any) => {
     sandbox = Sinon.createSandbox()
+    // eslint-disable-next-line @typescript-eslint/ban-ts-ignore
     // @ts-ignore
     sandbox.stub(Hapi, 'server')
     t.end()
@@ -148,6 +149,7 @@ Test('HealthCheckServer test', function(healthCheckServerTest: any) {
       // Arrange
       const routeStub = sandbox.stub()
       const startStub = sandbox.stub()
+      // eslint-disable-next-line @typescript-eslint/ban-ts-ignore
       //@ts-ignore
       Hapi.server.returns({
         route: routeStub,
