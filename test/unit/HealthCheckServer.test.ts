@@ -35,11 +35,12 @@ const HealthCheck = require('@mojaloop/central-services-shared').HealthCheck.Hea
 const { responseCode } = require('@mojaloop/central-services-shared').HealthCheck.HealthCheckEnums
 const ErrorEnums = require('@mojaloop/central-services-error-handling').Enums
 
-Test('HealthCheckServer test', function(healthCheckServerTest: any) {
+Test('HealthCheckServer test', (healthCheckServerTest: any) => {
   let sandbox: SinonSandbox
 
   healthCheckServerTest.beforeEach((t: any) => {
     sandbox = Sinon.createSandbox()
+    // eslint-disable-next-line @typescript-eslint/ban-ts-ignore
     // @ts-ignore
     sandbox.stub(Hapi, 'server')
     t.end()
@@ -148,7 +149,8 @@ Test('HealthCheckServer test', function(healthCheckServerTest: any) {
       // Arrange
       const routeStub = sandbox.stub()
       const startStub = sandbox.stub()
-      //@ts-ignore
+      // eslint-disable-next-line @typescript-eslint/ban-ts-ignore
+      // @ts-ignore
       Hapi.server.returns({
         route: routeStub,
         start: startStub,
