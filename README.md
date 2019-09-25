@@ -15,6 +15,7 @@ npm install @mojaloop/central-services-health
 
 //TODO: rewrite example usage
 
+<!--
 Import HealthCheck Library
 ```js
 const Metrics = require('@mojaloop/central-services-metrics')
@@ -54,3 +55,4 @@ const exampleFunction = async (error, message) => {
     }
 }
 ```
+-->
