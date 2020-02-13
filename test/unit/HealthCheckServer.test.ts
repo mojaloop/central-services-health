@@ -160,7 +160,9 @@ Test('HealthCheckServer test', (healthCheckServerTest: any) => {
       })
 
       // Act
-      const handler: any = () => {}
+      const handler: any = () => {
+        //
+      }
       await createHealthCheckServer('1234', handler)
 
       // Assert
