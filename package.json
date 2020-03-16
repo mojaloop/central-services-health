@@ -52,7 +52,7 @@
     "@hapi/hapi": "19.1.1",
     "@mojaloop/central-services-error-handling": "9.1.0",
     "@mojaloop/central-services-logger": "9.1.0",
-    "@mojaloop/central-services-shared": "9.1.4",
+    "@mojaloop/central-services-shared": "9.3.2",
     "tslib": "1.10.0"
   },
   "devDependencies": {
