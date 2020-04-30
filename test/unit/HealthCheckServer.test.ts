@@ -145,7 +145,7 @@ Test('HealthCheckServer test', (healthCheckServerTest: any) => {
   })
 
   healthCheckServerTest.test('createHealthCheckServer', (createHealthCheckServerTest: tape.Test) => {
-    createHealthCheckServerTest.test('starts the server', async (test) => {
+    createHealthCheckServerTest.test('starts the server', async test => {
       // Arrange
       const routeStub = sandbox.stub()
       const startStub = sandbox.stub()
