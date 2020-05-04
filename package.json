@@ -82,7 +82,7 @@
     "tap-xunit": "2.4.1",
     "tape": "5.0.0",
     "tapes": "4.1.0",
-    "ts-node": "8.9.1",
+    "ts-node": "8.10.1",
     "tslint": "6.1.2",
     "typedoc": "0.17.6",
     "typescript": "3.8.3"
