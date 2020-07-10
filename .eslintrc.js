@@ -36,10 +36,7 @@ module.exports = {
       // Disable some rules that we abuse in unit tests.
       files: ['test/**/*.ts'],
       rules: {
-        '@typescript-eslint/explicit-module-boundary-types': 'off',
-        '@typescript-eslint/explicit-function-return-type': 'off',
-        '@typescript-eslint/ban-ts-ignore': 'off',
-        '@typescript-eslint/ban-ts-comment': 'off'
+        '@typescript-eslint/explicit-function-return-type': 'off'
       }
     },
   ],
