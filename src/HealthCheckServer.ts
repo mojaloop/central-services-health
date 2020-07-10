@@ -78,8 +78,7 @@ const failAction = async (_request: Hapi.Request, _handler: Hapi.ResponseToolkit
  */
 
 const createHealthCheckServer = async (port: string, healthCheckHandler: Lifecycle.Method): Promise<Hapi.Server> => {
-  // eslint-disable-next-line @typescript-eslint/ban-ts-ignore
-  // @ts-ignore - type defs are wrong
+  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
   const server = Hapi.server({
     port,
     routes: {

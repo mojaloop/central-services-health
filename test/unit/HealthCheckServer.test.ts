@@ -40,8 +40,7 @@ Test('HealthCheckServer test', (healthCheckServerTest: any) => {
 
   healthCheckServerTest.beforeEach((t: any) => {
     sandbox = Sinon.createSandbox()
-    // eslint-disable-next-line @typescript-eslint/ban-ts-ignore
-    // @ts-ignore
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
     sandbox.stub(Hapi, 'server')
     t.end()
   })
@@ -145,11 +144,11 @@ Test('HealthCheckServer test', (healthCheckServerTest: any) => {
   })
 
   healthCheckServerTest.test('createHealthCheckServer', (createHealthCheckServerTest: tape.Test) => {
-    createHealthCheckServerTest.test('starts the server', async test => {
+    createHealthCheckServerTest.test('starts the server', async (test) => {
       // Arrange
       const routeStub = sandbox.stub()
       const startStub = sandbox.stub()
-      // eslint-disable-next-line @typescript-eslint/ban-ts-ignore
+      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
       // @ts-ignore
       Hapi.server.returns({
         route: routeStub,
