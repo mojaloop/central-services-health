@@ -40,8 +40,9 @@
   ],
   "author": "lewisdaly",
   "contributors": [
-    "Lewis Daly <lewis@vesselstech.com",
-    "Miguel de Barros <miguel.debarros@modusbox.com"
+    "Lewis Daly <lewis@vesselstech.com>",
+    "Miguel de Barros <miguel.debarros@modusbox.com>",
+    "Pawel Marzec <pawel.marzec@modusbox.com>"
   ],
   "license": "Apache-2.0",
   "bugs": {
