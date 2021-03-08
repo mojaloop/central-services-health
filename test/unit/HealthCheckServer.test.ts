@@ -29,10 +29,9 @@ import Sinon, { SinonSandbox } from 'sinon'
 import tape from 'tape'
 import Hapi from '@hapi/hapi'
 import { createHealthCheckServer, defaultHealthHandler, failAction } from '../../src/HealthCheckServer'
+import { ResponseCode } from '../../src/Enums'
 
 const Test = require('tapes')(require('tape'))
-const HealthCheck = require('@mojaloop/central-services-shared').HealthCheck.HealthCheck
-const { responseCode } = require('@mojaloop/central-services-shared').HealthCheck.HealthCheckEnums
 const ErrorEnums = require('@mojaloop/central-services-error-handling').Enums
 
 Test('HealthCheckServer test', (healthCheckServerTest: any) => {
@@ -53,9 +52,9 @@ Test('HealthCheckServer test', (healthCheckServerTest: any) => {
   healthCheckServerTest.test('defaultHealthHandler', (defaultHealthHandlerTest: any) => {
     defaultHealthHandlerTest.test('returns the default health handler', async (test: tape.Test) => {
       // Arrange
-      const healthCheck = new HealthCheck({ version: '1.0.0' }, [])
-      sandbox.stub(healthCheck, 'getHealth')
-      healthCheck.getHealth.returns({})
+      const healthCheck = {
+        getHealth: sandbox.stub().returns({})
+      }
       const codeStub = sandbox.stub()
       const responseStub = sandbox.stub().returns({ code: codeStub })
       const request: any = null
@@ -75,9 +74,9 @@ Test('HealthCheckServer test', (healthCheckServerTest: any) => {
 
     defaultHealthHandlerTest.test('still calls response if health check fails', async (test: tape.Test) => {
       // Arrange
-      const healthCheck = new HealthCheck({ version: '1.0.0' }, [])
-      sandbox.stub(healthCheck, 'getHealth')
-      healthCheck.getHealth.throws(new Error('Get health failed'))
+      const healthCheck = {
+        getHealth: sandbox.stub().throws(new Error('Get health failed'))
+      }
       const codeStub = sandbox.stub()
       const responseStub = sandbox.stub().returns({ code: codeStub })
       const request: any = null
@@ -97,10 +96,9 @@ Test('HealthCheckServer test', (healthCheckServerTest: any) => {
 
     defaultHealthHandlerTest.test('health check fails when sub-service check fails', async (test: tape.Test) => {
       // Arrange
-      const healthCheck = new HealthCheck({ version: '1.0.0' }, [
-        async () => ({ service: 'datastore', status: 'DOWN' })
-      ])
-
+      const healthCheck = {
+        getHealth: sandbox.stub().resolves({ service: 'datastore', status: 'DOWN' })
+      }
       const codeStub = sandbox.stub()
       const responseStub = sandbox.stub().returns({ code: codeStub })
       const request: any = null
@@ -113,16 +111,16 @@ Test('HealthCheckServer test', (healthCheckServerTest: any) => {
       await handler(request, h)
 
       // Assert
-      test.ok(codeStub.calledWith(responseCode.gatewayTimeout), 'codeStub has been called')
+      test.ok(codeStub.calledWith(ResponseCode.gatewayTimeout), 'codeStub has been called')
       test.ok(responseStub.called, 'responseStub has been called')
       test.end()
     })
 
     defaultHealthHandlerTest.test('health check passes with OK status', async (test: tape.Test) => {
       // Arrange
-      const healthCheck = new HealthCheck({ version: '1.0.0' }, [])
-      sandbox.stub(healthCheck, 'getHealth')
-      healthCheck.getHealth.resolves({ status: 'OK' })
+      const healthCheck = {
+        getHealth: sandbox.stub().resolves({ status: 'OK'})
+      }
       const codeStub = sandbox.stub()
       const responseStub = sandbox.stub().returns({ code: codeStub })
       const request: any = null

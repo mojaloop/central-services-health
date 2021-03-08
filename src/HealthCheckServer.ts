@@ -25,7 +25,8 @@
 import Hapi, { Lifecycle, ResponseObject } from '@hapi/hapi'
 const ErrorHandler = require('@mojaloop/central-services-error-handling')
 const Logger = require('@mojaloop/central-services-logger')
-const { responseCode, statusEnum } = require('@mojaloop/central-services-shared').HealthCheck.HealthCheckEnums
+
+import { ResponseCode, Status } from './Enums'
 
 /**
  * @function defaultHealthHandler
@@ -40,16 +41,16 @@ const { responseCode, statusEnum } = require('@mojaloop/central-services-shared'
 const defaultHealthHandler = (healthCheck: any): Lifecycle.Method => {
   return async (_, h): Promise<ResponseObject> => {
     let responseBody
-    let code = responseCode.success
+    let code = ResponseCode.success
     try {
       responseBody = await healthCheck.getHealth()
     } catch (err) {
       Logger.error(err.message)
     }
 
-    if (!responseBody || responseBody.status !== statusEnum.OK) {
+    if (!responseBody || responseBody.status !== Status.OK) {
       // Gateway Error
-      code = responseCode.gatewayTimeout
+      code = ResponseCode.gatewayTimeout
     }
 
     return h.response(responseBody).code(code)
