@@ -1,4 +1,3 @@
-
 export enum ResponseCode {
   success = 200,
   gatewayTimeout = 502

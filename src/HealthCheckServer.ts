@@ -22,6 +22,8 @@
  --------------
  ******/
 
+'use strict'
+
 import Hapi, { Lifecycle, ResponseObject } from '@hapi/hapi'
 const ErrorHandler = require('@mojaloop/central-services-error-handling')
 const Logger = require('@mojaloop/central-services-logger')
@@ -40,7 +42,7 @@ import { ResponseCode, Status } from './Enums'
  */
 const defaultHealthHandler = (healthCheck: any): Lifecycle.Method => {
   return async (_, h): Promise<ResponseObject> => {
-    let responseBody
+    let responseBody: any
     let code = ResponseCode.success
     try {
       responseBody = await healthCheck.getHealth()
@@ -48,7 +50,7 @@ const defaultHealthHandler = (healthCheck: any): Lifecycle.Method => {
       Logger.error(err.message)
     }
 
-    if (!responseBody || responseBody.status !== Status.OK) {
+    if (!responseBody || responseBody?.status !== Status.OK) {
       // Gateway Error
       code = ResponseCode.gatewayTimeout
     }

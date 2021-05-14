@@ -119,7 +119,7 @@ Test('HealthCheckServer test', (healthCheckServerTest: any) => {
     defaultHealthHandlerTest.test('health check passes with OK status', async (test: tape.Test) => {
       // Arrange
       const healthCheck = {
-        getHealth: sandbox.stub().resolves({ status: 'OK'})
+        getHealth: sandbox.stub().resolves({ status: 'OK' })
       }
       const codeStub = sandbox.stub()
       const responseStub = sandbox.stub().returns({ code: codeStub })
