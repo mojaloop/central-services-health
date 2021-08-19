@@ -50,7 +50,7 @@ const defaultHealthHandler = (healthCheck: any): Lifecycle.Method => {
       Logger.error(err.message)
     }
 
-    if (!responseBody || responseBody?.status !== Status.OK) {
+    if (responseBody?.status !== Status.OK) {
       // Gateway Error
       code = ResponseCode.gatewayTimeout
     }
