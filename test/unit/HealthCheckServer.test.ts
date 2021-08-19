@@ -53,7 +53,7 @@ Test('HealthCheckServer test', (healthCheckServerTest: any) => {
     defaultHealthHandlerTest.test('returns the default health handler', async (test: tape.Test) => {
       // Arrange
       const healthCheck = {
-        getHealth: sandbox.stub().returns({})
+        getHealth: sandbox.stub().resolves({})
       }
       const codeStub = sandbox.stub()
       const responseStub = sandbox.stub().returns({ code: codeStub })
