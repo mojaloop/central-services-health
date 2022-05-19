@@ -15,14 +15,17 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/mojaloop/central-services-metrics.git"
+    "url": "git+https://github.com/mojaloop/central-services-health.git"
   },
   "keywords": [
-    "metrics",
+    "health",
     "central",
     "services",
     "mojaloop"
   ],
+  "engines": {
+    "node": "=16.x"
+  },
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
   "files": [
@@ -38,7 +41,7 @@
     "test": "npm run test:unit",
     "pretest": "npm run build",
     "prepublishOnly": "npm run build",
-    "lint": "eslint ./src/**/*.ts ./test/**/*.ts",
+    "lint": "npx eslint ./src/**/*.ts ./test/**/*.ts",
     "lint:fix": "npm run lint -- --fix",
     "build": "npx tsc",
     "watch": "npx tsc -w",
@@ -58,10 +61,8 @@
     "tslib": "2.4.0"
   },
   "devDependencies": {
-    "@mojaloop/central-services-error-handling": "12.0.2",
-    "@mojaloop/central-services-logger": "11.0.1",
     "@types/hapi__hapi": "20.0.10",
-    "@types/node": "17.0.34",
+    "@types/node": "17.0.35",
     "@types/sinon": "10.0.11",
     "@types/tape": "4.13.2",
     "@typescript-eslint/eslint-plugin": "5.25.0",
@@ -92,8 +93,8 @@
     "typescript": "4.6.4"
   },
   "peerDependencies": {
-    "@mojaloop/central-services-error-handling": "12.0.2",
-    "@mojaloop/central-services-logger": "11.0.1"
+    "@mojaloop/central-services-error-handling": "12.x.x",
+    "@mojaloop/central-services-logger": "11.x.x"
   },
   "peerDependenciesMeta": {
     "@mojaloop/central-services-error-handling": {
