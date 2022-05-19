@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [14.0.1](https://github.com/mojaloop/central-services-metrics/compare/v14.0.0...v14.0.1) (2022-05-19)
+
+
+### Bug Fixes
+
+* updated peerDependencies as NPM v7+ handles their resolution for us ([8cc9b5c](https://github.com/mojaloop/central-services-metrics/commit/8cc9b5ce7b8a2510d194be52704b6fe6d0cabd45))
+
 ## [14.0.0](https://github.com/mojaloop/central-services-metrics/compare/v13.0.0...v14.0.0) (2022-05-19)
 
 
