@@ -25,7 +25,7 @@
 
 'use strict'
 
-import Sinon, { SinonSandbox } from 'sinon'
+import { SinonSandbox, createSandbox } from 'sinon'
 import tape from 'tape'
 import Hapi from '@hapi/hapi'
 import { createHealthCheckServer, defaultHealthHandler, failAction } from '../../src/HealthCheckServer'
@@ -38,7 +38,7 @@ Test('HealthCheckServer test', (healthCheckServerTest: any) => {
   let sandbox: SinonSandbox
 
   healthCheckServerTest.beforeEach((t: any) => {
-    sandbox = Sinon.createSandbox()
+    sandbox = createSandbox()
     // eslint-disable-next-line @typescript-eslint/ban-ts-comment
     sandbox.stub(Hapi, 'server')
     t.end()
