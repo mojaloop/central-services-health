@@ -64,7 +64,7 @@ Test('HealthCheckServer test', (healthCheckServerTest: any) => {
 
       // Act
       const handler = defaultHealthHandler(healthCheck)
-      await handler(request, h)
+      await handler.call(null, request, h)
 
       // Assert
       test.ok(codeStub.called, 'codeStub has been called')
@@ -86,7 +86,7 @@ Test('HealthCheckServer test', (healthCheckServerTest: any) => {
 
       // Act
       const handler = defaultHealthHandler(healthCheck)
-      await handler(request, h)
+      await handler.call(null, request, h)
 
       // Assert
       test.ok(codeStub.called, 'codeStub has been called')
@@ -108,7 +108,7 @@ Test('HealthCheckServer test', (healthCheckServerTest: any) => {
 
       // Act
       const handler = defaultHealthHandler(healthCheck)
-      await handler(request, h)
+      await handler.call(null, request, h)
 
       // Assert
       test.ok(codeStub.calledWith(ResponseCode.gatewayTimeout), 'codeStub has been called')
@@ -130,7 +130,7 @@ Test('HealthCheckServer test', (healthCheckServerTest: any) => {
 
       // Act
       const handler = defaultHealthHandler(healthCheck)
-      await handler(request, h)
+      await handler.call(null, request, h)
 
       // Assert
       test.ok(codeStub.called, 'codeStub has been called')
