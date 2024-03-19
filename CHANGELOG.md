@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [15.0.0](https://github.com/mojaloop/central-services-metrics/compare/v14.0.2...v15.0.0) (2024-03-19)
+
+
+### Bug Fixes
+
+* **mojaloop/#3656:** fix peer dependency version matcher ([#257](https://github.com/mojaloop/central-services-metrics/issues/257)) ([8f0675a](https://github.com/mojaloop/central-services-metrics/commit/8f0675a77c9e76eaa3abb86be936ab1bd81a0728))
+
 ### [14.0.2](https://github.com/mojaloop/central-services-metrics/compare/v14.0.1...v14.0.2) (2023-08-24)
 
 ### [14.0.1](https://github.com/mojaloop/central-services-metrics/compare/v14.0.0...v14.0.1) (2022-05-19)
