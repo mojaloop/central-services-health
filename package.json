@@ -89,7 +89,7 @@
     "typescript": "5.4.2"
   },
   "peerDependencies": {
-    "@mojaloop/central-services-error-handling": ">=12.x.x",
+    "@mojaloop/central-services-error-handling": ">=13.x.x",
     "@mojaloop/central-services-logger": ">=11.x.x"
   },
   "peerDependenciesMeta": {
