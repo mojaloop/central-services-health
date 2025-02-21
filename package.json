@@ -1,6 +1,6 @@
 {
   "name": "@mojaloop/central-services-health",
-  "version": "15.0.3",
+  "version": "15.0.4",
   "description": "Shared code for generic health check servers",
   "author": "lewisdaly",
   "contributors": [
