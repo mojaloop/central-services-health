@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [15.2.0](https://github.com/mojaloop/central-services-metrics/compare/v15.1.0...v15.2.0) (2025-09-25)
+
+
+### Features
+
+* add grype src scan plus update deps ([#266](https://github.com/mojaloop/central-services-metrics/issues/266)) ([d0ba385](https://github.com/mojaloop/central-services-metrics/commit/d0ba385cb6499839388bc38c712eef89c5141914))
+
 ## [15.1.0](https://github.com/mojaloop/central-services-metrics/compare/v15.0.4...v15.1.0) (2025-05-15)
 
 
