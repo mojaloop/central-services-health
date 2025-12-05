@@ -56,22 +56,22 @@
     "snapshot": "npx standard-version --no-verify --skip.changelog --prerelease snapshot --releaseCommitMessageFormat 'chore(snapshot): {{currentTag}}'"
   },
   "dependencies": {
-    "@hapi/hapi": "21.4.3",
+    "@hapi/hapi": "21.4.4",
     "tslib": "2.8.1"
   },
   "devDependencies": {
-    "@types/node": "24.5.2",
-    "@types/sinon": "17.0.4",
+    "@types/node": "24.10.1",
+    "@types/sinon": "21.0.0",
     "@types/tape": "5.8.1",
-    "@typescript-eslint/eslint-plugin": "8.44.1",
-    "@typescript-eslint/parser": "8.44.1",
+    "@typescript-eslint/eslint-plugin": "8.48.1",
+    "@typescript-eslint/parser": "8.48.1",
     "audit-ci": "7.1.0",
     "debug": "4.4.3",
-    "eslint": "9.36.0",
-    "npm-check-updates": "18.3.0",
+    "eslint": "9.39.1",
+    "npm-check-updates": "19.1.2",
     "nyc": "17.1.0",
     "pre-commit": "1.2.2",
-    "prettier": "3.6.2",
+    "prettier": "3.7.4",
     "replace": "1.2.2",
     "sinon": "21.0.0",
     "tap-spec": "5.0.0",
@@ -79,12 +79,14 @@
     "tape": "5.9.0",
     "tapes": "4.1.0",
     "ts-node": "10.9.2",
-    "typescript": "5.9.2",
-    "typedoc": "0.28.13"
+    "typescript": "5.9.3",
+    "typedoc": "0.28.15"
   },
   "overrides": {
     "cross-spawn": "7.0.6",
-    "trim": "0.0.3"
+    "trim": "0.0.3",
+    "js-yaml": "4.1.1",
+    "brace-expansion": "2.0.2"
   },
   "peerDependencies": {
     "@mojaloop/central-services-error-handling": ">=12.x.x",
