@@ -56,31 +56,31 @@
     "snapshot": "npx standard-version --no-verify --skip.changelog --prerelease snapshot --releaseCommitMessageFormat 'chore(snapshot): {{currentTag}}'"
   },
   "dependencies": {
-    "@hapi/hapi": "21.4.4",
+    "@hapi/hapi": "21.4.7",
     "tslib": "2.8.1"
   },
   "devDependencies": {
-    "@types/node": "25.2.3",
+    "@types/node": "25.3.5",
     "@types/sinon": "21.0.0",
     "@types/tape": "5.8.1",
-    "@typescript-eslint/eslint-plugin": "8.55.0",
-    "@typescript-eslint/parser": "8.55.0",
+    "@typescript-eslint/eslint-plugin": "8.56.1",
+    "@typescript-eslint/parser": "8.56.1",
     "audit-ci": "7.1.0",
     "debug": "4.4.3",
     "eslint": "9.39.1",
-    "npm-check-updates": "19.3.2",
-    "nyc": "17.1.0",
+    "npm-check-updates": "19.6.3",
+    "nyc": "18.0.0",
     "pre-commit": "1.2.2",
     "prettier": "3.8.1",
     "replace": "1.2.2",
-    "sinon": "21.0.1",
+    "sinon": "21.0.2",
     "tap-spec": "5.0.0",
     "tap-xunit": "2.4.1",
     "tape": "5.9.0",
     "tapes": "4.1.0",
     "ts-node": "10.9.2",
     "typescript": "5.9.3",
-    "typedoc": "0.28.16"
+    "typedoc": "0.28.17"
   },
   "overrides": {
     "cross-spawn": "7.0.6",
@@ -92,7 +92,7 @@
   },
   "peerDependencies": {
     "@mojaloop/central-services-error-handling": ">=12.x.x",
-    "@mojaloop/central-services-logger": ">=11.x.x"
+    "@mojaloop/central-services-logger": ">=11.11.0-infitx.0 <=11.11.0-infitx.9999"
   },
   "peerDependenciesMeta": {
     "@mojaloop/central-services-error-handling": {
