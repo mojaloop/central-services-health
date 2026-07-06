@@ -60,17 +60,19 @@
     "tslib": "2.8.1"
   },
   "devDependencies": {
-    "@types/node": "25.9.4",
+    "@eslint/js": "^10.0.1",
+    "@types/node": "26.1.0",
     "@types/sinon": "22.0.0",
     "@types/tape": "5.8.1",
-    "@typescript-eslint/eslint-plugin": "8.62.1",
-    "@typescript-eslint/parser": "8.62.1",
+    "@typescript-eslint/eslint-plugin": "8.63.0",
+    "@typescript-eslint/parser": "8.63.0",
     "audit-ci": "7.1.0",
     "debug": "4.4.3",
-    "eslint": "9.39.1",
+    "eslint": "10.6.0",
+    "globals": "^17.7.0",
     "npm-check-updates": "22.2.9",
     "nyc": "18.0.0",
-    "pre-commit": "1.2.2",
+    "pre-commit": "2.0.0",
     "prettier": "3.9.4",
     "replace": "1.2.2",
     "sinon": "22.0.0",
@@ -79,8 +81,8 @@
     "tape": "5.9.0",
     "tapes": "4.1.0",
     "ts-node": "10.9.2",
-    "typescript": "5.9.3",
-    "typedoc": "0.28.20"
+    "typedoc": "0.28.20",
+    "typescript": "6.0.3"
   },
   "overrides": {
     "cross-spawn": "7.0.6",
