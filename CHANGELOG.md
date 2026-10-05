@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [15.2.4](https://github.com/mojaloop/central-services-metrics/compare/v15.2.3...v15.2.4) (2026-10-05)
+
+
+### Bug Fixes
+
+* **security:** patch 4 vulnerabilities + update deps, orb ([#273](https://github.com/mojaloop/central-services-metrics/issues/273)) ([7e895b5](https://github.com/mojaloop/central-services-metrics/commit/7e895b560978857d3abf9da432a80ad3f9dc0758))
+
 ### [15.2.3](https://github.com/mojaloop/central-services-metrics/compare/v15.2.2...v15.2.3) (2026-07-09)
 
 ### [15.2.2](https://github.com/mojaloop/central-services-metrics/compare/v15.2.1...v15.2.2) (2026-02-13)
